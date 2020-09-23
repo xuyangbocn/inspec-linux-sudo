@@ -23,7 +23,7 @@ control "CSG-SUDO-B3" do
     impact 0.7
     title "not permit root login"
     describe sshd_config do
-        its('PermitRootLogin') { should cmp 'no' }
+        its('PermitRootLogin') { should be_in ['no', nil] }
     end
 end
 
@@ -63,3 +63,10 @@ control "CSG-SUDO-E7" do
 end
 
 
+control "CSG-SUDO-E11" do
+    impact 0.7
+    title "sudoer secure path is set"
+    describe command('grep "^Defaults secure_path=" /etc/sudoers') do
+      its('stdout') { should match '.+' }
+    end
+end
