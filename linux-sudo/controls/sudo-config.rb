@@ -62,7 +62,6 @@ control "CSG-SUDO-E7" do
     end
 end
 
-
 control "CSG-SUDO-E11" do
     impact 0.7
     title "sudoer secure path is set"
